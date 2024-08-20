@@ -1,5 +1,6 @@
 // C++ code
 //
+#include <LiquidCrystal.h>
 
 int redPin = 2;
 int yellowPin = 3;
@@ -8,6 +9,9 @@ int bluePin = 5;
 
 int buzzerPin = 6;
 int button = 3;
+
+LiquidCrystal lcd(8, 9, 10, 11, 12, 13);
+const int contrast = 7;
 
 void setup()
 {
@@ -18,10 +22,18 @@ void setup()
   
   pinMode(buzzerPin, OUTPUT);
   pinMode(button, INPUT_PULLUP);
+  
+  analogWrite(contrast, 100);
+  lcd.begin(16, 2);
 }
 
 void loop()
 {
+  lcd.setCursor(0, 0);
+  lcd.print("Happy Birthday!");
+  lcd.setCursor(0, 1);
+  lcd.print("Happy Birthday!");
+
   digitalWrite(redPin, HIGH);
   delay(100);
   digitalWrite(redPin, LOW);
